@@ -1307,6 +1307,7 @@
   "subscribed_languages.save": "Save changes",
   "subscribed_languages.target": "Change subscribed languages for {target}",
   "tabs_bar.home": "Home",
+  "tabs_bar.following": "Following",
   "tabs_bar.menu": "Menu",
   "tabs_bar.notifications": "Notifications",
   "tabs_bar.publish": "New Post",

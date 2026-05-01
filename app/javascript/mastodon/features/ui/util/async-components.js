@@ -14,6 +14,10 @@ export function HomeTimeline () {
   return import('../../home_timeline');
 }
 
+export function FollowingFeed () {
+  return import('../../following_feed');
+}
+
 export function PublicTimeline () {
   return import('../../public_timeline');
 }

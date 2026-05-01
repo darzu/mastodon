@@ -1,0 +1,105 @@
+.column {
+  min-width: min(100%, 760px);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  min-height: 0;
+  flex: 1 1 auto;
+  border: 1px solid var(--color-border-primary);
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+
+.accountsList,
+.statusesList {
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.accountsList {
+  border-inline-end: 1px solid var(--color-border-primary) !important;
+}
+
+.account {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 14px;
+  border: 0;
+  border-bottom: 1px solid var(--color-border-primary);
+  background: transparent;
+  color: var(--color-text-primary);
+  text-align: start;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible,
+  &.selected {
+    background: var(--color-bg-brand-softest);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-border-brand);
+    outline-offset: -2px;
+  }
+}
+
+.accountText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.displayName,
+.handle,
+.lastPost {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.displayName {
+  font-weight: 700;
+}
+
+.handle,
+.lastPost {
+  color: var(--color-text-secondary);
+}
+
+.lastPost {
+  font-size: 14px;
+}
+
+.statusesEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  padding: 20px;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+@media screen and (width <= 760px) {
+  .column {
+    min-width: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .accountsList {
+    flex: 0 0 auto;
+    max-height: 45vh;
+    border-inline-end: 0 !important;
+    border-bottom: 1px solid var(--color-border-primary) !important;
+  }
+}
