@@ -58,26 +58,17 @@ const FollowingFeed: FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
 
   const sortedAccountIds = useMemo(() => {
     const items = followingList?.items ?? [];
+    const lastPostTimestamps = new Map(
+      items.map((id) => {
+        const lastPostAt = accounts.get(id)?.last_status_at;
+        const timestamp = lastPostAt ? Date.parse(lastPostAt) : 0;
+
+        return [id, Number.isNaN(timestamp) ? 0 : timestamp];
+      }),
+    );
 
     return [...items].sort((a, b) => {
-      const aLastPost = accounts.get(a)?.last_status_at;
-      const bLastPost = accounts.get(b)?.last_status_at;
-
-      if (!aLastPost && !bLastPost) {
-        return 0;
-      }
-
-      if (!aLastPost) {
-        return 1;
-      }
-
-      if (!bLastPost) {
-        return -1;
-      }
-
-      return (
-        new Date(bLastPost).getTime() - new Date(aLastPost).getTime()
-      );
+      return (lastPostTimestamps.get(b) ?? 0) - (lastPostTimestamps.get(a) ?? 0);
     });
   }, [accounts, followingList?.items]);
 
