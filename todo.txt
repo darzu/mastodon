@@ -1,0 +1,3 @@
+https://mastodon.social/@mcc/113223217966405584
+
+Cohost had a view where (as alternative to the normal linear feed), it showed everyone you follow, sorted by last post, and you could click to see recent posts. A problem with social media is the more you post, the more space you take up. Cohost "Following" made everyone take up the same amount of space, while still prioritizing recency. A nice compromise
