@@ -81,11 +81,10 @@ const FollowingFeed: FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
     });
   }, [accounts, followingList?.items]);
 
-  useEffect(() => {
-    if (!selectedAccountId && sortedAccountIds[0]) {
-      setSelectedAccountId(sortedAccountIds[0]);
-    }
-  }, [selectedAccountId, sortedAccountIds]);
+  const visibleSelectedAccountId =
+    selectedAccountId && sortedAccountIds.includes(selectedAccountId)
+      ? selectedAccountId
+      : (sortedAccountIds[0] ?? null);
 
   const loadMoreFollowing = useDebouncedCallback(
     () => {
@@ -132,13 +131,13 @@ const FollowingFeed: FC<{ multiColumn: boolean }> = ({ multiColumn }) => {
               <FollowingFeedAccount
                 key={accountId}
                 accountId={accountId}
-                selected={accountId === selectedAccountId}
+                selected={accountId === visibleSelectedAccountId}
                 onSelect={setSelectedAccountId}
               />
             ))}
           </ScrollableList>
 
-          <FollowingFeedStatuses accountId={selectedAccountId} />
+          <FollowingFeedStatuses accountId={visibleSelectedAccountId} />
         </div>
       )}
     </Column>
@@ -164,7 +163,7 @@ const FollowingFeedAccount: FC<{
   return (
     <button
       type='button'
-      className={classNames(classes.account, { [classes.selected]: selected })}
+      className={classNames(classes.account, selected && classes.selected)}
       onClick={handleClick}
       data-hover-card-account={accountId}
     >
@@ -181,7 +180,6 @@ const FollowingFeedAccount: FC<{
                 date: (
                   <RelativeTimestamp
                     timestamp={account.last_status_at}
-                    short
                   />
                 ),
               }}
