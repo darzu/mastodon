@@ -47,6 +47,7 @@ import {
   AccountTimeline,
   AccountGallery,
   HomeTimeline,
+  FollowingFeed,
   Followers,
   Following,
   Reblogs,
@@ -200,6 +201,7 @@ class SwitchingColumnsArea extends PureComponent {
             <WrappedRoute path='/terms-of-service/:date?' component={TermsOfService} content={children} />
 
             <WrappedRoute path={['/home', '/timelines/home']} component={HomeTimeline} content={children} />
+            <WrappedRoute path='/following' component={FollowingFeed} content={children} />
             <Redirect from='/timelines/public' to='/public' exact />
             <Redirect from='/timelines/public/local' to='/public/local' exact />
             <WrappedRoute path='/public' exact component={Firehose} componentParams={{ feedType: 'public' }} content={children} />

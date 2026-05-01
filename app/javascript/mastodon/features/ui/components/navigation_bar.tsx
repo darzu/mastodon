@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import { NavLink, useRouteMatch } from 'react-router-dom';
 
 import AddIcon from '@/material-icons/400-24px/add.svg?react';
+import GroupsActiveIcon from '@/material-icons/400-24px/groups-fill.svg?react';
+import GroupsIcon from '@/material-icons/400-24px/groups.svg?react';
 import HomeActiveIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home.svg?react';
 import MenuIcon from '@/material-icons/400-24px/menu.svg?react';
@@ -24,6 +26,7 @@ import { useAppDispatch, useAppSelector } from 'mastodon/store';
 
 export const messages = defineMessages({
   home: { id: 'tabs_bar.home', defaultMessage: 'Home' },
+  following: { id: 'tabs_bar.following', defaultMessage: 'Following' },
   search: { id: 'tabs_bar.search', defaultMessage: 'Search' },
   publish: { id: 'tabs_bar.publish', defaultMessage: 'New Post' },
   notifications: {
@@ -180,6 +183,12 @@ export const NavigationBar: React.FC = () => {
               to='/home'
               icon={<Icon id='' icon={HomeIcon} />}
               activeIcon={<Icon id='' icon={HomeActiveIcon} />}
+            />
+            <IconLabelButton
+              title={intl.formatMessage(messages.following)}
+              to='/following'
+              icon={<Icon id='' icon={GroupsIcon} />}
+              activeIcon={<Icon id='' icon={GroupsActiveIcon} />}
             />
             <IconLabelButton
               title={intl.formatMessage(messages.search)}

@@ -19,6 +19,8 @@ import CollectionsActiveIcon from '@/material-icons/400-24px/category-fill.svg?r
 import CollectionsIcon from '@/material-icons/400-24px/category.svg?react';
 import HomeActiveIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import HomeIcon from '@/material-icons/400-24px/home.svg?react';
+import GroupsActiveIcon from '@/material-icons/400-24px/groups-fill.svg?react';
+import GroupsIcon from '@/material-icons/400-24px/groups.svg?react';
 import InfoIcon from '@/material-icons/400-24px/info.svg?react';
 import NotificationsActiveIcon from '@/material-icons/400-24px/notifications-fill.svg?react';
 import NotificationsIcon from '@/material-icons/400-24px/notifications.svg?react';
@@ -62,6 +64,7 @@ import { Trends } from './components/trends';
 
 const messages = defineMessages({
   home: { id: 'tabs_bar.home', defaultMessage: 'Home' },
+  following: { id: 'tabs_bar.following', defaultMessage: 'Following' },
   notifications: {
     id: 'tabs_bar.notifications',
     defaultMessage: 'Notifications',
@@ -269,6 +272,14 @@ export const NavigationPanel: React.FC<{ multiColumn?: boolean }> = ({
               iconComponent={HomeIcon}
               activeIconComponent={HomeActiveIcon}
               text={intl.formatMessage(messages.home)}
+            />
+            <ColumnLink
+              transparent
+              to='/following'
+              icon='groups'
+              iconComponent={GroupsIcon}
+              activeIconComponent={GroupsActiveIcon}
+              text={intl.formatMessage(messages.following)}
             />
           </>
         )}
