@@ -225,7 +225,7 @@ const FollowingFeedStatuses: FC<{ accountId: string | null }> = ({
   const handleLoadMore = useCallback(
     (maxId?: string) => {
       if (key) {
-        dispatch(expandTimelineByKey({ key, maxId: maxId as unknown as number }));
+        dispatch(expandTimelineByKey({ key, maxId }));
       }
     },
     [dispatch, key],

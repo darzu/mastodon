@@ -13,7 +13,7 @@ import {
 } from './timelines';
 
 export const expandTimelineByKey = createAppThunk(
-  (args: { key: string; maxId?: number }, { dispatch }) => {
+  (args: { key: string; maxId?: string | number }, { dispatch }) => {
     const params = parseTimelineKey(args.key);
     if (!params) {
       return;
@@ -24,7 +24,7 @@ export const expandTimelineByKey = createAppThunk(
 );
 
 export const expandTimelineByParams = createAppThunk(
-  (params: TimelineParams & { maxId?: number }, { dispatch }) => {
+  (params: TimelineParams & { maxId?: string | number }, { dispatch }) => {
     let url = '';
     const extra: Record<string, string | boolean> = {};
 
