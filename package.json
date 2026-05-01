@@ -5,34 +5,14 @@
   "engines": {
     "node": ">=20"
   },
-  "workspaces": [
-    ".",
-    "streaming"
-  ],
   "scripts": {
     "dev": "vite dev",
     "build:development": "cross-env RAILS_ENV=development NODE_ENV=development vite build",
     "build:production": "cross-env RAILS_ENV=production NODE_ENV=production vite build",
-    "fix:js": "eslint . --cache --fix",
-    "fix:css": "stylelint --fix \"**/*.{css,scss}\"",
-    "fix": "yarn fix:js && yarn fix:css",
-    "format": "oxfmt",
-    "format:check": "oxfmt --check",
-    "i18n:extract": "formatjs extract 'app/javascript/**/*.{js,jsx,ts,tsx}' config/vite/plugin-sw-locales.ts --ignore '**/*.d.ts' --out-file app/javascript/mastodon/locales/en.json --format config/formatjs-formatter.js",
-    "lint:js": "cd $INIT_CWD && eslint --cache --report-unused-disable-directives",
+    "lint:js": "eslint --cache --report-unused-disable-directives .",
     "lint:css": "stylelint \"**/*.{css,scss}\"",
     "lint": "yarn lint:js && yarn lint:css",
-    "postversion": "git push --tags",
-    "postinstall": "test -d node_modules/husky && husky || echo \"husky is not installed\"",
-    "start": "node ./streaming/index.js",
-    "test": "yarn lint && yarn run typecheck && yarn test:js run",
-    "test:js": "vitest --project=legacy-tests",
-    "test:storybook": "vitest --project=storybook",
-    "typecheck": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "npx chromatic -d storybook-static",
-    "msw:updateWorker": "msw init"
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -131,13 +111,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@formatjs/cli": "^6.1.1",
-    "@storybook/addon-a11y": "^10.3.0",
-    "@storybook/addon-docs": "^10.3.0",
-    "@storybook/addon-vitest": "^10.3.0",
-    "@storybook/react-vite": "^10.3.0",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/react": "^16.3.0",
     "@types/debug": "^4",
     "@types/emoji-mart": "3.0.14",
     "@types/escape-html": "^1.0.2",
@@ -156,14 +129,8 @@
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-sparklines": "^1.7.2",
-    "@types/react-test-renderer": "^18.0.0",
     "@types/redux-immutable": "^4.0.3",
     "@types/requestidlecallback": "^0.3.5",
-    "@vitest/browser": "^4.1.0",
-    "@vitest/browser-playwright": "^4.1.0",
-    "@vitest/coverage-v8": "^4.1.0",
-    "@vitest/ui": "^4.1.0",
-    "chromatic": "^16.0.0",
     "eslint": "^9.39.2",
     "eslint-import-resolver-typescript": "^4.2.5",
     "eslint-plugin-formatjs": "^6.0.0",
@@ -173,23 +140,12 @@
     "eslint-plugin-promise": "~7.2.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-storybook": "^10.2.8",
-    "fake-indexeddb": "^6.0.1",
     "globals": "^17.3.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^16.2.6",
-    "msw": "^2.12.1",
-    "msw-storybook-addon": "^2.0.6",
-    "oxfmt": "^0.33.0",
-    "playwright": "^1.57.0",
-    "react-test-renderer": "^18.2.0",
-    "storybook": "^10.3.0",
     "stylelint": "^17.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.55.0",
-    "typescript-plugin-css-modules": "^5.2.0",
-    "vitest": "^4.1.0"
+    "typescript-plugin-css-modules": "^5.2.0"
   },
   "resolutions": {
     "@types/react": "^18.2.7",
@@ -207,9 +163,5 @@
       "optional": true
     }
   },
-  "msw": {
-    "workerDirectory": [
-      ".storybook/static"
-    ]
-  }
+  "description": "Standalone Mastodon web client assets"
 }
