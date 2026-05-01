@@ -1,4 +1,0 @@
-shared:
-  cas_enabled?: <%= ENV.fetch('CAS_ENABLED', 'false') == 'true' %>
-  oidc_enabled?: <%= ENV.fetch('OIDC_ENABLED', 'false') == 'true' %>
-  saml_enabled?: <%= ENV.fetch('SAML_ENABLED', 'false') == 'true' %>

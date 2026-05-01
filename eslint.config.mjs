@@ -10,8 +10,6 @@ import jsxA11Y from 'eslint-plugin-jsx-a11y';
 import promisePlugin from 'eslint-plugin-promise';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-// @ts-expect-error -- No types available for this package
-import storybook from 'eslint-plugin-storybook';
 import { globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -119,18 +117,10 @@ export default tseslint.config([
   globalIgnores([
     'build/**/*',
     'coverage/**/*',
-    'db/**/*',
-    'lib/**/*',
-    'log/**/*',
     'node_modules/**/*',
     'public/**/*',
-    '!public/embed.js',
-    'spec/**/*',
     'tmp/**/*',
-    'vendor/**/*',
-    'streaming/**/*',
     '.bundle/**/*',
-    'storybook-static/**/*',
   ]),
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
@@ -139,7 +129,6 @@ export default tseslint.config([
   importPlugin.flatConfigs.react,
   // @ts-expect-error -- For some reason the formatjs package exports an empty object?
   formatjs.configs.strict,
-  storybook.configs['flat/recommended'],
   {
     languageOptions: {
       globals: {
@@ -202,13 +191,6 @@ export default tseslint.config([
           devDependencies: [
             'eslint.config.mjs',
             'app/javascript/mastodon/performance.js',
-            'app/javascript/testing/**/*',
-            'app/javascript/**/__tests__/**',
-            'app/javascript/**/*.stories.ts',
-            'app/javascript/**/*.stories.tsx',
-            'app/javascript/**/*.test.ts',
-            'app/javascript/**/*.test.tsx',
-            '.storybook/**/*',
           ],
         },
       ],
@@ -254,7 +236,6 @@ export default tseslint.config([
       '**/*.config.js',
       '**/.*rc.js',
       '**/ide-helper.js',
-      'config/formatjs-formatter.js',
     ],
 
     languageOptions: {
@@ -350,35 +331,6 @@ export default tseslint.config([
         },
       ],
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
-    },
-  },
-  {
-    files: ['**/__tests__/*.js', '**/__tests__/*.jsx'],
-
-    languageOptions: {
-      globals: globals.vitest,
-    },
-  },
-  {
-    files: ['**/*.test.*'],
-    rules: {
-      'no-global-assign': 'off',
-    },
-  },
-  {
-    files: ['**/*.stories.ts', '**/*.stories.tsx', '.storybook/*'],
-    rules: {
-      'import/no-default-export': 'off',
-      'react-hooks/rules-of-hooks': 'off',
-    },
-  },
-  {
-    files: ['vitest.shims.d.ts'],
-    rules: {
-      '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
-      '@typescript-eslint/no-unnecessary-condition': 'off',
-      '@typescript-eslint/no-useless-default-assignment': 'off',
-      '@typescript-eslint/prefer-nullish-coalescing': 'off',
     },
   },
 ]);
